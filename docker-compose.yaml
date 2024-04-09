@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  appsatoru:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: satorugojo
+    restart: always
+    volumes:
+      - ..:/var/www/html
+      - ./laravel.conf:/etc/apache2/sites-available/laravel.conf
+    ports:
+      - "8009:80"
+    networks:
+      - satorugojo
+
+networks:
+  satorugojo:
